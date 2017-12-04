@@ -1,0 +1,34 @@
+#mainRow{
+    position:relative !important;
+}
+#tempProgress {
+   transform: rotate(270deg);
+    position:relative !important;
+}
+  
+#myTemp {
+    text-align: center;
+    color: white;
+    transform: rotate(180deg);
+}
+#tb1{
+    margin-top:25%;
+}
+#thermostat{
+    margin-left:50%;
+    height: 300px;
+}
+#tb2 td{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    width: 5px;
+    border-color: white;
+}
+#tb2 p{
+    margin-top:40px;
+    margin-bottom:0px;
+}
+#secondeRow{
+    margin-top:50px;
+}

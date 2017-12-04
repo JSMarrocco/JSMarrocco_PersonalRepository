@@ -1,0 +1,53 @@
+1,Dejeuner
+2,Desserts
+3,Confiture de rhubarbes
+4,Pate brisee
+5,Rhubarbes
+6,Fraises
+7,Zeste de citron
+8,Kombucha
+9,Citron
+10,Gelatine
+11,Mousse au citron
+12,Oeufs
+13,Creme
+14,Oeufs brouilles
+15,Tarte fraises-rhubarbes
+16,Tarte au citron
+17,Lait
+18,Sucre
+19,Yoghurt
+20,Farine
+21,Poivre
+22,Sel
+
+3,1
+17,19
+19,1
+10,11
+9,7
+7,11
+11,16
+16,2
+20,4
+4,16
+21,14
+22,14
+12,14
+18,3
+18,11
+18,8
+8,1
+8,8
+5,8
+5,3
+5,15
+15,2
+16,2
+14,2
+17,14
+17,13
+4,15
+13,15
+19,1
+19,11

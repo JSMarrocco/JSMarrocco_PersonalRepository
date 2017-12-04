@@ -1,0 +1,174 @@
+body {
+  margin: 0px;
+  background-color: white;
+}
+
+.container_navbar {
+  overflow: hidden;
+  background-color: rgb(36, 36, 36);
+  font: Arial;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.container_brand {
+  float: left;
+}
+
+.container_brand .brandName {
+  color: white !important;
+  font-size: 24px;
+  font-weight: normal !important;
+}
+
+.line-separator {
+  list-style: none;
+  height: 100%;
+  width: 3px;
+  background-color: white;
+  padding: 8px 0px;
+  margin: 6px 8px 0px 0px;
+}
+
+.container_navbar a {
+  float: none;
+  color: black !important;
+  padding: 14px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-weight: normal !important;
+}
+
+.container_dropdown {
+  float: left;
+}
+
+.btnDropdown {
+  font-size: 24px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 16px;
+  background-color: inherit;
+}
+
+.dropdown_content {
+  display: none;
+  position: fixed;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.show {
+  display: block;
+}
+
+.btnDropdown:hover {
+  background-color: #33ccff;
+  box-shadow: 0px 0px 24px 6px rgba(0, 0, 0, 0.2);
+}
+
+.container_dropdown:hover .dropdown_content {
+  display: block;
+}
+
+.dropdown_content a:hover {
+  background-color: #ffb366;
+  box-shadow: 0px 0px 24px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
+/*
+ * Vectical menu icon
+ */
+
+.container_menuIcon {
+  width: 35px;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 2px 5px;
+  margin: 5px 20px 5px 0px;
+  float: right;
+}
+
+.container_menuIcon div {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+
+/*
+ * Menu de navigation vertical
+ */
+
+.container_verticalbar {
+  overflow: hidden;
+  background-color: rgb(36, 36, 36);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  font: Arial;
+  width: 200px;
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 59px;
+}
+
+.container_verticalbar a {
+  float: none;
+  color: white !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-weight: normal !important;
+}
+
+.container_verticalbar a:hover {
+  background-color: red;
+  box-shadow: 0px 0px 24px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/*
+ *Permet de toggle entre visible et invisible pour le menu vertical
+ *Est utiliser dans le JS code
+ */
+
+.show {
+  display: block;
+}
+
+
+/*
+ *Container de la title box
+ */
+
+.container_titleBox {
+  width: 1200px;
+  height: 600px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -600px;
+  margin-top: -300px;
+  background-color: #BFBFBF;
+  border-radius: 30px;
+  box-shadow: 0px 0px 16px 16px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+  width: 800px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -100px;
+}
