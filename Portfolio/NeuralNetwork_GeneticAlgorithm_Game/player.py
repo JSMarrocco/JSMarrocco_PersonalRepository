@@ -1,5 +1,5 @@
 from gameObject import GameObject
-import pygame, math
+import pygame, math, time
 from random import randint
 from neuralnetwork import NeuralNetwork
 
@@ -17,6 +17,8 @@ class Player(GameObject):
         self.goal = goal
         self.brain = NeuralNetwork([len(self.obstacles) * 3 + 1, len(self.obstacles) * 3 + 1, 2]) if brain is None else brain
         self.specialEffect = special_effect
+        self.birth_time = 0
+        self.winner = False
 
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.bounds)
@@ -34,7 +36,14 @@ class Player(GameObject):
         self.move(0, -PLAYER_VELOCITY)
 
     def kill(self):
-        self.isAlive = False;
+        self.isAlive = False
+
+    def update_fitness(self):
+        '''
+            Update the fitness value base on the distance between the player and the goal and the current time alive
+        '''
+        tmpFitness = getDistanceBetween(self, self.goal)*(0.6) + (time.time() - self.birth_time)*(0.4)
+        if tmpFitness < self.fitness: self.fitness = tmpFitness
 
     def update(self):
         '''
@@ -42,8 +51,7 @@ class Player(GameObject):
         '''
         if self.isAlive:
             if self.specialEffect is not True:
-                tmpFitness = getDistanceBetween(self, self.goal)
-                if tmpFitness < self.fitness: self.fitness = tmpFitness
+                self.update_fitness()
                 self.updateObstaclesAwareness()
                 self.speed = self.transalteBrainPrediction()
                 self.move(*self.speed)
@@ -58,6 +66,7 @@ class Player(GameObject):
             self.obstaclesAwareness.append(math.sqrt(pow(abs(self.centerx - o.bounds.x), 2) + pow(abs(self.centery - o.bounds.y), 2)))
             self.obstaclesAwareness.append(math.sqrt(pow(abs(self.centerx - o.bounds.x - o.bounds.w), 2) + pow(abs(self.centery - o.bounds.y - o.bounds.h), 2)))
 
+        self.obstaclesAwareness.append(self.fitness)
         return self.obstaclesAwareness
 
     def handle_collision(self):
@@ -112,7 +121,7 @@ class Player(GameObject):
 
         # Hit nugget
         if intersect(self.goal, self):
-            self.fitness = 0
+            self.winner = True
             self.kill()
 
     def transalteBrainPrediction(self):
@@ -163,6 +172,10 @@ class Population:
     def handle_collision(self):
         for p in self.players:
             p.handle_collision()
+
+    def init_start_time(self, time):
+        for p in self.players:
+            p.birth_time = time
 
     def isExtinct(self):
         for p in self.players:

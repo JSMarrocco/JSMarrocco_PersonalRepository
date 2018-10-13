@@ -85,7 +85,7 @@ class Game:
             o.update()
 
         myfont = pygame.font.SysFont("monospace", 32)
-        self.scoreLabel = myfont.render("Score: " + str(int(self.score)), 1, COLOR_WHITE)
+        self.scoreLabel = myfont.render("Score: " + str(("%.2f" % self.score)), 1, COLOR_WHITE)
         self.genLabel = myfont.render("Generation: " + str(self.gen), 1, COLOR_WHITE)
 
         self.population.update()
@@ -177,6 +177,7 @@ def main():
 
     while True:
         start = time.time()
+        game.population.init_start_time(start)
         while True:
             game.handle_events()
             game.handle_collisions()

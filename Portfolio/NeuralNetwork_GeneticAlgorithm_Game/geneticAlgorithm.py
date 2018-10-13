@@ -31,24 +31,30 @@ def evolve(settings, organismsOld, gen, oldScore):
 
     # --- Elitism (Keep best performing) ---#
     orgsSorted = sorted(organismsOld, key=lambda x: x.fitness, reverse=False)
-    if orgsSorted[0].fitness == 0:
-        return [Player(SCREENRECT.centerx, 430, 5, 5, orgsSorted[0].color, orgsSorted[0].goal,
-                       orgsSorted[0].obstacles, orgsSorted[0].brain)], gen, orgsSorted[0].fitness
-    elif orgsSorted[0].fitness < oldScore:
-        orgsSorted[0].color = (randint(50, 200), randint(50, 200), randint(50, 200))
+    # if orgsSorted[0].fitness == 0:
+    #     return [Player(SCREENRECT.centerx, 430, 5, 5, orgsSorted[0].color, orgsSorted[0].goal,
+    #                    orgsSorted[0].obstacles, orgsSorted[0].brain)], gen, orgsSorted[0].fitness
 
+    winner_count = 0
     organismsNew = []
-    for i in range(0, elitismNum):
+    for org in orgsSorted:
+        if org.winner:
+            organismsNew.append(Player(SCREENRECT.centerx, 430, 5, 5, org.color, org.goal, org.obstacles, org.brain))
+            winner_count += 1
+
+    if oldScore - orgsSorted[winner_count].fitness >= 1 :
+        orgsSorted[winner_count].color = (randint(50, 200), randint(50, 200), randint(50, 200))
+            
+    for i in range(winner_count, elitismNum + winner_count):
         organismsNew.append(
-            Player(SCREENRECT.centerx, 430, 5, 5, orgsSorted[i].color, orgsSorted[i].goal, orgsSorted[i].obstacles,
-                   orgsSorted[i].brain)
+            Player(SCREENRECT.centerx, 430, 5, 5, orgsSorted[i].color, orgsSorted[i].goal, orgsSorted[i].obstacles, orgsSorted[i].brain)
         )
 
     # --- Generate new population ---#
     for w in range(0, newOrgs - 1):
 
         # Selection
-        candidates = list(range(0, elitismNum))
+        candidates = list(range(0, winner_count + elitismNum))
         randomIndex = sample(candidates, 1)
         org_1 = copy.deepcopy(orgsSorted[randomIndex[0]])
 
