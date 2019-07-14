@@ -13,7 +13,7 @@ PLAYER_VELOCITY = 3
 
 settings = defaultdict()
 settings['GAME_TIME_LIMIT'] = 6
-settings['POPULATION_SIZE'] = 25
+settings['POPULATION_SIZE'] = 50
 settings['ELITISM'] = 0.12
 settings['REPRODUCE_ODDS'] = 0.8
 settings['CROSSOVER_ODDS'] = 0.4

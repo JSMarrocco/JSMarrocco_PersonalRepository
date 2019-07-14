@@ -15,7 +15,7 @@ class Player(GameObject):
         self.obstacles = obstacles
         self.obstaclesAwareness = []
         self.goal = goal
-        self.brain = NeuralNetwork([len(self.obstacles) * 3 + 1, len(self.obstacles) * 3 + 1, 2]) if brain is None else brain
+        self.brain = NeuralNetwork([len(self.obstacles) * 3 + 3, len(self.obstacles) * 3 + 3, 2]) if brain is None else brain
         self.specialEffect = special_effect
         self.birth_time = 0
         self.winner = False
@@ -67,6 +67,8 @@ class Player(GameObject):
             self.obstaclesAwareness.append(math.sqrt(pow(abs(self.centerx - o.bounds.x - o.bounds.w), 2) + pow(abs(self.centery - o.bounds.y - o.bounds.h), 2)))
 
         self.obstaclesAwareness.append(self.fitness)
+        self.obstaclesAwareness.append(self.speed[0])
+        self.obstaclesAwareness.append(self.speed[1])
         return self.obstaclesAwareness
 
     def handle_collision(self):
