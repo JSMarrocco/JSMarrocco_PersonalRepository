@@ -1,3 +1,0 @@
-#!/bin/bash
-sudo rm -rf .vscode/
-sudo rm -rf __pycache__/
